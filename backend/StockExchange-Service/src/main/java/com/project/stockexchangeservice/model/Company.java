@@ -1,10 +1,12 @@
 package com.project.stockexchangeservice.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
+@Document(collection="company")
 public class Company{
 	@Id
-	int id;
+	String id;
 	String name;
 	int turnover;
 	String ceo;
@@ -13,7 +15,7 @@ public class Company{
 	String about;
 	public Company() {
 	}
-	public Company(int id, String name, int turnover, String ceo, String[] boardOfDirectors, int sector, String about) {
+	public Company(String id, String name, int turnover, String ceo, String[] boardOfDirectors, int sector, String about) {
 		this.id = id;
 		this.name = name;
 		this.turnover = turnover;
@@ -58,7 +60,7 @@ public class Company{
 	public void setAbout(String about) {
 		this.about = about;
 	}
-	public int getId() {
+	public String getId() {
 		return id;
 	}
 }
