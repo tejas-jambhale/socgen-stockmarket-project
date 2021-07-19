@@ -1,5 +1,7 @@
 package com.project.sectorservice.model;
 
+import java.util.List;
+
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -9,7 +11,7 @@ public class Sector{
 	String id;
 	String name;
 	String brief;
-	String[] companies;
+	List<Company> companies;
 	public String getName() {
 		return name;
 	}
@@ -25,10 +27,10 @@ public class Sector{
 	public String getId() {
 		return id;
 	}
-	public String[] getCompanies() {
+	public List<Company> getCompanies() {
 		return companies;
 	}
-	public void setCompanies(String[] companies) {
+	public void setCompanies(List<Company> companies) {
 		this.companies = companies;
 	}
 	

@@ -7,6 +7,7 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.sectorservice.model.Company;
 import com.project.sectorservice.model.Sector;
 import com.project.sectorservice.repository.SectorRepository;
 import com.project.sectorservice.service.SectorService;
@@ -17,10 +18,10 @@ class SectorServiceImpl implements SectorService{
 	@Autowired
 	SectorRepository sectorRepository;
 	
-	public List<String> getCompanyList(String id){
+	public List<Company> getCompanyList(String id){
 		Optional<Sector> sectOpt = sectorRepository.findById(id);
 		Sector sect =  sectOpt.get();
-		return Arrays.asList(sect.getCompanies());
+		return sect.getCompanies();
 	}
 	
 	public Sector getSectorDetails(String id) {

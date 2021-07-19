@@ -9,6 +9,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.project.sectorservice.model.Company;
 import com.project.sectorservice.model.Sector;
 import com.project.sectorservice.service.SectorService;
 
@@ -19,7 +20,7 @@ class SectorServiceController{
 	SectorService sectorService;
 	
 	@RequestMapping(path="/getsectorcompanies", method=RequestMethod.GET )
-	public ResponseEntity<List<String>> getList(@RequestParam String id){
+	public ResponseEntity<List<Company>> getList(@RequestParam String id){
 		return ResponseEntity.ok(sectorService.getCompanyList(id));
 	}
 	
