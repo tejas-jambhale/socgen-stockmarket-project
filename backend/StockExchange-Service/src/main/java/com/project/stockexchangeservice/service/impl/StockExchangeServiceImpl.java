@@ -23,7 +23,6 @@ public class StockExchangeServiceImpl implements StockExchangeService {
 	
 	public StockExchange getExchangeFromId(String id) {
 		Optional<StockExchange> stockExchange = stockExchangeRepository.findById(id);
-		System.out.println(stockExchange);
 		return stockExchange.get();
 	}
 
