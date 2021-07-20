@@ -11,11 +11,11 @@ public class Company{
 	int turnover;
 	String ceo;
 	String[] boardOfDirectors;
-	int sector;
+	String sector;
 	String about;
 	public Company() {
 	}
-	public Company(String id, String name, int turnover, String ceo, String[] boardOfDirectors, int sector, String about) {
+	public Company(String id, String name, int turnover, String ceo, String[] boardOfDirectors, String sector, String about) {
 		this.id = id;
 		this.name = name;
 		this.turnover = turnover;
@@ -48,10 +48,10 @@ public class Company{
 	public void setBoardOfDirectors(String[] boardOfDirectors) {
 		this.boardOfDirectors = boardOfDirectors;
 	}
-	public int getSector() {
+	public String getSector() {
 		return sector;
 	}
-	public void setSector(int sector) {
+	public void setSector(String sector) {
 		this.sector = sector;
 	}
 	public String getAbout() {
