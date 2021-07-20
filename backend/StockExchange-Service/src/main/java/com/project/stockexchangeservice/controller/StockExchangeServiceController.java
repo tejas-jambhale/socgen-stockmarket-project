@@ -4,10 +4,10 @@ import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.project.stockexchangeservice.model.StockExchange;
@@ -25,13 +25,13 @@ public class StockExchangeServiceController{
 		 return ResponseEntity.ok(stockExchangeService.getExchangeList());
 	 }
 	 
-	 @RequestMapping(path="/getExchangeData", method=RequestMethod.GET)
-	 public ResponseEntity<StockExchange> getExchange(@RequestParam String id){
+	 @RequestMapping(path="/getExchangeData/{id}", method=RequestMethod.GET)
+	 public ResponseEntity<StockExchange> getExchange(@PathVariable String id){
 		 return ResponseEntity.ok(stockExchangeService.getExchangeFromId(id));
 	 }	
 	  
 	 @RequestMapping(path="/getCompaniesFromExchange/{id}", method=RequestMethod.GET) 
-	 public ResponseEntity<List<Company>> getCompaniesFromExchange(@RequestParam String id){
+	 public ResponseEntity<List<Company>> getCompaniesFromExchange(@PathVariable String id){
 		 return ResponseEntity.ok(stockExchangeService.getCompanyList(id));
 	 }	
 	 
@@ -44,5 +44,10 @@ public class StockExchangeServiceController{
 	 public void updateExchange(@RequestBody StockExchange stockExchange) {
 		 stockExchangeService.updateStockExchange(stockExchange);
 	 }
+	 
+	 @RequestMapping(path="/addCompanyToExchange/{exchangename}", method=RequestMethod.POST)
+		public void addCompanytoExchange(@PathVariable String exchangename, @RequestBody Company company) {
+			stockExchangeService.addCompanyToExchange(exchangename, company);
+		}
 	 
 }

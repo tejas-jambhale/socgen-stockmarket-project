@@ -3,6 +3,7 @@ package com.project.stockexchangeservice.model;
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 @Document(collection="stockexchange")
@@ -13,6 +14,7 @@ public class StockExchange{
 	String brief;
 	String address;
 	String remarks;
+	@DBRef
 	List<Company> companyList;
 
 	public StockExchange() {

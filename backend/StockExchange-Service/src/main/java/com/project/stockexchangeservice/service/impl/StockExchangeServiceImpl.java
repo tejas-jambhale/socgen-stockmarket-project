@@ -1,5 +1,6 @@
 package com.project.stockexchangeservice.service.impl;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
 
@@ -37,6 +38,20 @@ public class StockExchangeServiceImpl implements StockExchangeService {
 	
 	public void updateStockExchange(StockExchange stockExchange) {
 		stockExchangeRepository.save(stockExchange);
+	}
+	
+	public void addCompanyToExchange(String exchangename, Company company) {
+		StockExchange se = stockExchangeRepository.findByName(exchangename);
+		if (se != null) {
+			if (se.getCompanyList()==null) {
+				se.setCompanyList(Arrays.asList(company));
+				se = stockExchangeRepository.save(se);
+			}
+			else {
+				se.getCompanyList().add(company);
+				se = stockExchangeRepository.save(se);
+			}
+		}
 	}
 	
 
