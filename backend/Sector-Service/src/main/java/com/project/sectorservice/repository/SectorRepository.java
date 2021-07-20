@@ -9,5 +9,7 @@ import com.project.sectorservice.model.Sector;
 
 @Repository
 public interface SectorRepository extends MongoRepository<Sector, String>{
-	public Optional<Sector> findById(String id);		
+	public Optional<Sector> findById(String id);
+
+	public Sector findByName(String sectorName);		
 }
