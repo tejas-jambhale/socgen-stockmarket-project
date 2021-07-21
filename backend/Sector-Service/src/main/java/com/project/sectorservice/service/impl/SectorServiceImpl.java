@@ -13,19 +13,33 @@ import com.project.sectorservice.repository.SectorRepository;
 import com.project.sectorservice.service.SectorService;
 
 @Service
-class SectorServiceImpl implements SectorService{
-	
+class SectorServiceImpl implements SectorService {
+
 	@Autowired
 	SectorRepository sectorRepository;
-	
-	public List<Company> getCompanyList(String id){
+
+	public List<Company> getCompanyList(String id) {
 		Optional<Sector> sectOpt = sectorRepository.findById(id);
-		Sector sect =  sectOpt.get();
+		Sector sect = sectOpt.get();
 		return sect.getCompanies();
 	}
-	
+
 	public Sector getSectorDetails(String id) {
 		Optional<Sector> sectOpt = sectorRepository.findById(id);
 		return sectOpt.get();
+	}
+
+	public void addCompanyToSector(String sectorName, Company company) {
+		Sector sector = sectorRepository.findByName(sectorName);
+		if (sector != null) {
+			if (sector.getCompanies()==null) {
+				sector.setCompanies(Arrays.asList(company));
+				sector = sectorRepository.save(sector);
+			}
+			else {
+			sector.getCompanies().add(company);
+			sector = sectorRepository.save(sector);
+			}
+		}
 	}
 }

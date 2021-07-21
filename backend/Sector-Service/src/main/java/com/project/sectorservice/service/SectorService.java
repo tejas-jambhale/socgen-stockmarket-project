@@ -8,4 +8,5 @@ import com.project.sectorservice.model.Sector;
 public interface SectorService{
 	public List<Company> getCompanyList(String id);
 	public Sector getSectorDetails(String id);
+	public void addCompanyToSector(String sectorName, Company company);
 }

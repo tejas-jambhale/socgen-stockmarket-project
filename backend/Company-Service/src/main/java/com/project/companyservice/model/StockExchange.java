@@ -1,11 +1,15 @@
-package com.project.stockexchangeservice.model;
+package com.project.companyservice.model;
 
 import java.util.List;
 
 import org.springframework.data.annotation.Id;
-import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
 @Document(collection="stockexchange")
 public class StockExchange{
 	@Id
@@ -14,7 +18,6 @@ public class StockExchange{
 	String brief;
 	String address;
 	String remarks;
-	@DBRef
 	List<Company> companyList;
 
 	public StockExchange() {
@@ -72,6 +75,4 @@ public class StockExchange{
 	public void setCompanyList(List<Company> companyList) {
 		this.companyList = companyList;
 	}
-	
-	
 }

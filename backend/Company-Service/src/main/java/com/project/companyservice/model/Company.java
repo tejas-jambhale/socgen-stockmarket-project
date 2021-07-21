@@ -1,8 +1,13 @@
-package com.project.stockexchangeservice.model;
+package com.project.companyservice.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
 @Document(collection="company")
 public class Company{
 	@Id
