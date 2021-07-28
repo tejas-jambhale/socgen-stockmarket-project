@@ -1,0 +1,72 @@
+<div class="row">
+  <div class="col-md-6">
+    <a routerLink="/ipos" class="btn btn-link">
+      <i class="fa fa-arrow-circle-o-left"></i> Back
+    </a>
+  </div>
+  <div class="col-md-6">
+
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header head-custom">
+    Add IPO
+  </div>
+  <div class="card-body">
+    <form #ipoForm="ngForm" (ngSubmit)="onSubmit(ipoForm)">
+
+      <div class="form-group">
+        <input type="text" class="form-control" name="companyName" #companyName="ngModel" [(ngModel)]="ipo.companyName"
+          placeholder="Company Name" minlength="2" required>
+        <div [hidden]="!companyName.errors?.required" class="invalid-feedback">
+          Company name required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" name="stockExchangeName" #stockExchangeName="ngModel"
+          [(ngModel)]="ipo.stockExchangeName" placeholder="Stock Exchange Name" minlength="2" required>
+        <div [hidden]="!stockExchangeName.errors?.required" class="invalid-feedback">
+          Stock Exchange Name required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="pricePerShare">Price Per Share</label>
+        <input type="number" class="form-control" name="pricePerShare" #pricePerShare="ngModel"
+          [(ngModel)]="ipo.pricePerShare" placeholder="Price per Share" required>
+        <div [hidden]="!pricePerShare.errors?.required" class="invalid-feedback">
+          Price required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="totalShares">Shares</label>
+        <input type="number" class="form-control" name="totalShares" #totalShares="ngModel"
+          [(ngModel)]="ipo.totalShares" placeholder="Shares" required>
+        <div [hidden]="!totalShares.errors?.required" class="invalid-feedback">
+          Shares required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" name="listingDate" #listingDate="ngModel" [(ngModel)]="ipo.listingDate"
+          placeholder="Open Date and Time" minlength="2" required>
+        <div [hidden]="!listingDate.errors?.required" class="invalid-feedback">
+          Open Date and Time Required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" name="remarks" #remarks="ngModel" [(ngModel)]="ipo.remarks"
+          placeholder="Remarks" minlength="2" required>
+        <div [hidden]="!remarks.errors?.required" class="invalid-feedback">
+          Remarks required
+        </div>
+      </div>
+
+      <input type="submit" value="Submit" class="btn btn-custom btn-block">
+    </form>
+  </div>
+</div>

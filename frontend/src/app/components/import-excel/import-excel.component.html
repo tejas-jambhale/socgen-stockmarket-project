@@ -1,0 +1,17 @@
+<hr>
+<br>
+<h3>Import Data from Excel File</h3>
+<br>
+<br>
+<div>
+  <div *ngIf="!isUploaded" class="col-md-8 form-group">
+    <div class="input-group">
+      <div class="custom-file">
+        <input type="file" class="form-control" (change)="onUpload($event)" placeholder="Upload file" id="excel"
+          accept=".csv,application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel">
+        <label class="custom-file-label" for="excel">Choose file</label>
+      </div>
+    </div><br><br>
+
+  </div>
+</div>

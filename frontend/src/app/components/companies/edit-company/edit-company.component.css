@@ -1,0 +1,14 @@
+.btn-custom{
+    background-color: purple;
+    color: white;
+    font-weight: 700;
+}
+
+.head-custom{
+    font-weight: 500;
+    background-color:  white;
+}
+
+.form-group{
+    margin-bottom: 25px;
+}

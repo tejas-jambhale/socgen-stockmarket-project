@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-md-6">
+        <a routerLink="/companies" class="btn btn-link">
+            <i class="fa fa-arrow-circle-o-left"></i> Back
+        </a>
+    </div>
+    <div class="col-md-6">
+
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header head-custom">
+        Edit stockExchange
+    </div>
+    <div class="card-body">
+        <form #stockExchangeForm="ngForm" (ngSubmit)="onSubmit(stockExchangeForm)">
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="stockExchange.name"
+                    placeholder="stockExchange Name" minlength="2">
+            </div>
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="address" #address="ngModel"
+                    [(ngModel)]="stockExchange.address" placeholder="stockExchange address" minlength="2">
+            </div>
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="brief" #brief="ngModel" [(ngModel)]="stockExchange.brief"
+                    placeholder="stockExchange brief" minlength="2">
+            </div>
+
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" name="remarks" #remarks="ngModel"
+                    [(ngModel)]="stockExchange.remarks" placeholder="Chief Executive Officer" minlength="2">
+            </div>
+
+            <input type="submit" value="Submit" class="btn btn-custom">
+        </form>
+    </div>
+</div>

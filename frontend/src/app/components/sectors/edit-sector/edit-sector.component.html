@@ -1,0 +1,33 @@
+<div class="row">
+    <div class="col-md-6">
+        <a routerLink="/companies" class="btn btn-link">
+            <i class="fa fa-arrow-circle-o-left"></i> Back
+        </a>
+    </div>
+    <div class="col-md-6">
+
+    </div>
+</div>
+
+<div class="card">
+    <div class="card-header head-custom">
+        Edit sector
+    </div>
+    <div class="card-body">
+        <form #companyForm="ngForm" (ngSubmit)="onSubmit(sectorForm)">
+
+            <div class="form-group">
+                <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="sector.name"
+                    placeholder="sector Name" minlength="2">
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" name="brief" #code="ngModel" [(ngModel)]="sector.brief"
+                    placeholder="sector brief" minlength="2">
+
+            </div>
+
+            <input type="submit" value="Submit" class="btn btn-custom">
+        </form>
+    </div>
+</div>

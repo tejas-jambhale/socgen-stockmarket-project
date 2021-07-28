@@ -1,0 +1,13 @@
+.card-header{
+    background-color:  white;
+    font-weight: bold;
+}
+
+.btn-custom{
+    background-color: purple;
+    color: white;
+}
+
+.form-group{
+    margin-bottom: 25px;
+}

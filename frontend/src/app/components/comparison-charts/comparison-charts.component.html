@@ -1,0 +1,51 @@
+<hr>
+<h3>Compare Companies</h3>
+<br>
+<br>
+<div>
+  <div>
+    Comparison Charts
+  </div>
+
+  <div class="card-body">
+    <form #compareForm="ngForm" (ngSubmit)="onSubmit(compareForm)">
+
+      <div class="form-group">
+        <label for="stockExchangeName">Select Stock Exchange</label>
+        <input type="text" class="form-control" name="stockExchangeName" #stockExchangeName="ngModel"
+          [(ngModel)]="comparison.stockExchangeName" required>
+      </div>
+
+      <div class="form-group">
+        <label for="name">Company Name</label>
+        <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="comparison.name"
+          placeholder="Company Name" minlength="2" required>
+        <div [hidden]="!name.errors?.required" class="invalid-feedback">
+          Company Name required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="fromPeriod">From Date (dd-MM-YY)</label>
+        <input type="text" class="form-control" name="fromPeriod" #fromPeriod="ngModel"
+          [(ngModel)]="comparison.fromPeriod" required>
+        <div [hidden]="!fromPeriod.errors?.required" class="invalid-feedback">
+          From Date required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="toPeriod">To Date (dd-MM-YY)</label>
+        <input type="text" class="form-control" name="toPeriod" #toPeriod="ngModel" [(ngModel)]="comparison.toPeriod"
+          required>
+        <div [hidden]="!toPeriod.errors?.required" class="invalid-feedback">
+          To Date required
+        </div>
+      </div>
+      <input type="submit" value="Create Chart" class="btn btn-custom">
+    </form>
+  </div>
+</div>
+<div>
+  <canvas id="canvasId" width="400px" height="200px"></canvas>
+</div>
