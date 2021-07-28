@@ -30,7 +30,9 @@ export class ComparisonSectorComponent implements OnInit {
       .subscribe(response => {
         let pricesList = response.map(res => res.price);
         let datesList = response.map(res => res.currentPriceDate);
+        // get the cavas element where to display the chart
         let htmlRef = (<HTMLCanvasElement>document.getElementById("canvasId")).getContext('2d');
+        // create the line chart
         this.chart = new Chart(htmlRef, {
           type: 'line',
           data: {

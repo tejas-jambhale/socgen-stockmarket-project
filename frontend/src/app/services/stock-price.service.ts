@@ -41,20 +41,11 @@ export class StockPriceService {
         this.router.navigate(['/stock-prices']);
       });
   }
-  /*
-  getCompanyStockPrices(comparsion: Comparison) {
-    return this.http.post<StockPrice[]>(this.url + "/compareCompany", comparsion);
-  }
-  //
-  getSectorStockPrices(comparsion: Comparison) {
-    return this.http.post<StockPrice[]>(this.url + "/compareSector", comparsion);
-  }
-  */
 
   getCompanyStockPrices(comparsion: Comparison) {
     return this.http.get<StockPrice[]>(this.url + "/getCompanyPrices/" + comparsion.name + "/" + comparsion.stockExchangeName + "/" + comparsion.fromPeriod + "/" + comparsion.toPeriod);
   }
-  //
+
   getSectorStockPrices(comparsion: Comparison) {
     return this.http.get<StockPrice[]>(this.url + "/getSectorPrices/" + comparsion.name + "/" + comparsion.stockExchangeName + "/" + comparsion.fromPeriod + "/" + comparsion.toPeriod);
   }
