@@ -3,25 +3,35 @@ package com.project.sectorservice.model;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+
+@Data
+@AllArgsConstructor
 @Document(collection="company")
 public class Company{
 	@Id
 	String id;
 	String name;
+	String code;
 	int turnover;
 	String ceo;
-	String[] boardOfDirectors;
+	String boardOfDirectors;
 	String sector;
+	String stockExchange;
 	String about;
 	public Company() {
 	}
-	public Company(String name, int turnover, String ceo, String[] boardOfDirectors, String sector, String about) {
+	public Company(String id, String name, int turnover, String ceo, String boardOfDirectors, String sector, String about, String code, String stockExchange) {
+		this.id = id;
 		this.name = name;
 		this.turnover = turnover;
 		this.ceo = ceo;
 		this.boardOfDirectors = boardOfDirectors;
 		this.sector = sector;
 		this.about = about;
+		this.code = code;
+		this.stockExchange = stockExchange;
 	}
 	public String getName() {
 		return name;
@@ -41,10 +51,10 @@ public class Company{
 	public void setCeo(String ceo) {
 		this.ceo = ceo;
 	}
-	public String[] getBoardOfDirectors() {
+	public String getBoardOfDirectors() {
 		return boardOfDirectors;
 	}
-	public void setBoardOfDirectors(String[] boardOfDirectors) {
+	public void setBoardOfDirectors(String boardOfDirectors) {
 		this.boardOfDirectors = boardOfDirectors;
 	}
 	public String getSector() {
@@ -61,5 +71,17 @@ public class Company{
 	}
 	public String getId() {
 		return id;
+	}
+	public String getCode() {
+		return code;
+	}
+	public void setCode(String code) {
+		this.code = code;
+	}
+	public String getStockExchange() {
+		return stockExchange;
+	}
+	public void setStockExchange(String stockExchange) {
+		this.stockExchange = stockExchange;
 	}
 }

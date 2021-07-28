@@ -1,0 +1,46 @@
+<hr>
+<h3 class="text-center">List of IPOs</h3>
+<br>
+<a routerLink="/create-ipo" class="btn btn-custom">Add new IPO</a>
+<br>
+<br>
+
+<table *ngIf="ipos?.length>0; else noIpos" class="table table-striped table-hover table-bordered">
+  <thead class="thead-inverse thead-custom">
+    <tr>
+      <th></th>
+      <th>Company Name</th>
+      <th>Stock Exchange</th>
+      <th>Price per Share</th>
+      <th>Number of Shares</th>
+      <th>Open Date Time</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let ipo of ipos">
+      <td style="font-weight: bold;"></td>
+      <td>{{ ipo.company.name }}</td>
+      <td>{{ ipo.stockExchange.name }}</td>
+      <td>{{ ipo.pricePerShare }}</td>
+      <td>{{ ipo.totalShares }}</td>
+      <td>{{ ipo.listingDate }}</td>
+      <td>
+        <a routerLink="/edit-ipo/{{ ipo.id }}" class="btn btn-dark btn-md">
+          Update Details
+        </a>
+      </td>
+      <td>
+        <button (click)="onDeleteClick(ipo.id)" class="btn btn-danger btn-md">
+          Remove
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noIpos>
+  <hr>
+  <h5>No IPO</h5>
+</ng-template>

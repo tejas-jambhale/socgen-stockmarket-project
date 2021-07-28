@@ -20,4 +20,6 @@ public interface StockExchangeService
 	public void updateStockExchange(StockExchange stockExchange);
 
 	public void addCompanyToExchange(String exchangename, Company company);
+
+	public void deleteExchange(String id);
 }

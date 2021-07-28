@@ -1,0 +1,46 @@
+<hr>
+<h3 class="text-center">List of Sectors</h3>
+<br>
+<a routerLink="/create-sector" class="btn btn-custom">Add new Sector</a>
+<br>
+<br>
+
+<table *ngIf="sectors?.length>0; else noSectors" class="table table-striped table-hover table-bordered">
+  <thead class="thead-inverse thead-custom">
+    <tr>
+      <th></th>
+      <th>Sector Name</th>
+      <th>Brief</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let sector of sectors">
+      <td style="font-weight: bold;"></td>
+      <td>{{ sector.name }}</td>
+      <td>{{ sector.brief }}</td>
+      <!--
+     <td>
+        <a routerLink="sector-company/{{ sector.id }}" class="btn btn-dark btn-sm">
+          <i class="fa fa-pencil"></i> View Companies
+        </a>
+      </td>
+      -->
+      <td>
+        <a routerLink="/edit-sector/{{ sector.id }}" class="btn btn-dark btn-md">
+          Update Details
+        </a>
+      </td>
+      <td>
+        <button (click)="onDeleteClick(sector.id)" class="btn btn-danger btn-md">
+          Remove
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<ng-template #noSectors>
+  <h5>No records</h5>
+</ng-template>

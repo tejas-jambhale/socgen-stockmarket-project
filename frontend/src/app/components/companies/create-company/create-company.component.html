@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="col-md-6">
+    <a routerLink="/companies" class="btn btn-link">
+      <i class="fa fa-arrow-circle-o-left"></i> Back
+    </a>
+  </div>
+  <div class="col-md-6">
+
+  </div>
+</div>
+<br>
+<div class="">
+  <h5 class=" head-text head-custom">
+    Add Company
+  </h5>
+  <div class="card-body">
+    <form #companyForm="ngForm" (ngSubmit)="onSubmit(companyForm)">
+
+      <div class="form-group">
+        <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="company.name"
+          placeholder="Company Name" minlength="2" required>
+        <div [hidden]="!name.errors?.required" class="invalid-feedback">
+          Company name required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" name="code" #code="ngModel" [(ngModel)]="company.code"
+          placeholder="Company Code" minlength="2" required>
+        <div [hidden]="!code.errors?.required" class="invalid-feedback">
+          Company Code required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" name="turnover" #turnover="ngModel" [(ngModel)]="company.turnover"
+          placeholder="Company Turnover" minlength="2" required>
+        <div [hidden]="!turnover.errors?.required" class="invalid-feedback">
+          Company Turnover required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" name="ceo" #ceo="ngModel" [(ngModel)]="company.ceo"
+          placeholder="Chief Executive Officer" minlength="2" required>
+        <div [hidden]="!ceo.errors?.required" class="invalid-feedback">
+          CEO of Company required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" name="boardOfDirectors" #boardOfDirectors="ngModel"
+          [(ngModel)]="company.boardOfDirectors" placeholder="Board Of Directors (seperated by comma)" minlength="2"
+          required>
+        <div [hidden]="!boardOfDirectors.errors?.required" class="invalid-feedback">
+          CEO of Company required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" name="stockExchange" #stockExchange="ngModel"
+          [(ngModel)]="company.stockExchange" placeholder="Stock Exchanges (seperated by comma)" minlength="2" required>
+        <div [hidden]="!stockExchange.errors?.required" class="invalid-feedback">
+          Stock Exchange Names required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" name="sector" #sector="ngModel" [(ngModel)]="company.sector"
+          placeholder="Sector Name" minlength="2" required>
+        <div [hidden]="!sector.errors?.required" class="invalid-feedback">
+          Sector name required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" name="about" #about="ngModel" [(ngModel)]="company.about"
+          placeholder="Company about" minlength="2" required>
+        <div [hidden]="!about.errors?.required" class="invalid-feedback">
+          About for the company required
+        </div>
+      </div>
+
+      <input type="submit" value="Submit" class="btn btn-custom">
+    </form>
+  </div>
+</div>

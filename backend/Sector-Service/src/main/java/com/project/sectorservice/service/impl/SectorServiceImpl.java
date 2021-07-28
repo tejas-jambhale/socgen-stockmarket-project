@@ -18,6 +18,10 @@ class SectorServiceImpl implements SectorService {
 	@Autowired
 	SectorRepository sectorRepository;
 
+	public List<Sector> getAll(){
+		return sectorRepository.findAll();
+	}
+	
 	public List<Company> getCompanyList(String id) {
 		Optional<Sector> sectOpt = sectorRepository.findById(id);
 		Sector sect = sectOpt.get();
@@ -41,5 +45,19 @@ class SectorServiceImpl implements SectorService {
 			sector = sectorRepository.save(sector);
 			}
 		}
+	}
+	
+	public void addNewSector(Sector sector) {
+		sectorRepository.save(sector);
+	}
+	
+	public void update(Sector sector) {
+		if(sectorRepository.findById(sector.getId()) != null)
+			sectorRepository.save(sector);
+	}
+	
+	public void deleteSector(String id) {
+		if(sectorRepository.findById(id)!=null)
+			sectorRepository.deleteById(id);
 	}
 }

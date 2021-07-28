@@ -1,0 +1,44 @@
+<div id="sidebar-wrapper" class="sidebar navbar-expand-md navbar-custom navbar-dark border-right mb-4">
+  <div class="container">
+    <a routerLink="/" class="navbar-brand sidebar-header"> Stock Market Charting App</a>
+    <button class="navbar-toggler" type="button" data-target="collapse" data-target="#navbarMain">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="list-group list-group-flush collapse sidebar navbar-collapse" id="navbarMain">
+      <ul *ngIf="isAuthenticated" class="navbar-nav sidebar mr-auto flex-column " aria-orientation="vertical">
+
+        <li class="nav-item">
+          <a routerLink="/comparison-charts" class="nav-link">Company Comparison</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/comparison-sector" class="nav-link">Sector Comparison</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/companies" class="nav-link">Companies</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/import-excel" class="nav-link">Import Data</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/stock-exchanges" class="nav-link">Stock Exchanges</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/sectors" class="nav-link">Sectors</a>
+        </li>
+        <li class="nav-item">
+          <a routerLink="/ipos" class="nav-link">IPOs</a>
+        </li>
+
+        <li *ngIf="isAuthenticated" class="nav-item">
+          <a routerLink="/signup" class="nav-link">SignUp</a>
+        </li>
+        <li *ngIf="isAuthenticated" class="nav-item">
+          <a routerLink="/login" class="nav-link">Login</a>
+        </li>
+        <li *ngIf="isAuthenticated" class="nav-item">
+          <a href="#" (click)="onLogoutClick()" class="nav-link">Logout</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>

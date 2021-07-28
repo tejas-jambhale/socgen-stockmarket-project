@@ -1,0 +1,54 @@
+<div class="row">
+  <div class="col-md-6">
+    <a routerLink="/stock-exchanges" class="btn btn-link">
+      <i class="fa fa-arrow-circle-o-left"></i> Back
+    </a>
+  </div>
+  <div class="col-md-6">
+
+  </div>
+</div>
+
+<div class="card">
+  <div class="card-header head-custom">
+    Add Company
+  </div>
+  <div class="card-body">
+    <form #stockExchangeForm="ngForm" (ngSubmit)="onSubmit(stockExchangeForm)">
+
+      <div class="form-group">
+        <input type="text" class="form-control" name="name" #name="ngModel" [(ngModel)]="stockExchange.name"
+          placeholder="Stock Exchange Name" minlength="2" required>
+        <div [hidden]="!name.errors?.required" class="invalid-feedback">
+          Stock Exchange name required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" name="brief" #brief="ngModel" [(ngModel)]="stockExchange.brief"
+          placeholder="Stock Exchange brief" minlength="2" required>
+        <div [hidden]="!brief.errors?.required" class="invalid-feedback">
+          Brief for the Stock Exchange required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" name="address" #address="ngModel" [(ngModel)]="stockExchange.address"
+          placeholder="Contact Address" minlength="2" required>
+        <div [hidden]="!address.errors?.required" class="invalid-feedback">
+          Contact Address for the Stock Exchange required
+        </div>
+      </div>
+
+      <div class="form-group">
+        <input type="text" class="form-control" name="remarks" #remarks="ngModel" [(ngModel)]="stockExchange.remarks"
+          placeholder="Remarks" minlength="2" required>
+        <div [hidden]="!remarks.errors?.required" class="invalid-feedback">
+          Remarks required
+        </div>
+      </div>
+
+      <input type="submit" value="Submit" class="btn btn-custom btn-block">
+    </form>
+  </div>
+</div>

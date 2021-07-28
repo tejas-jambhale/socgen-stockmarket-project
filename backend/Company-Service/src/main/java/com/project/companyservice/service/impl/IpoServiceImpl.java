@@ -6,8 +6,13 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.companyservice.dto.IPODto;
+import com.project.companyservice.model.Company;
 import com.project.companyservice.model.IPODetails;
+import com.project.companyservice.model.StockExchange;
+import com.project.companyservice.repository.CompanyRepository;
 import com.project.companyservice.repository.IpoRepository;
+import com.project.companyservice.repository.StockExchangeRepository;
 import com.project.companyservice.service.IpoService;
 
 @Service
@@ -15,6 +20,12 @@ public class IpoServiceImpl implements IpoService
 {
 	@Autowired
 	private IpoRepository ipoRepository;
+	
+	@Autowired
+	private CompanyRepository companyRepository;
+	
+	@Autowired
+	private StockExchangeRepository stockExchangeRepository;
 	
 	@Override
 	public List<IPODetails> findAll() {
@@ -38,7 +49,7 @@ public class IpoServiceImpl implements IpoService
 	
 	@Override
 	public IPODetails update(IPODetails ipo) {
-		if(findById(ipo.getId()) == null)
+		if(ipoRepository.findById(ipo.getId()) == null)
 			return null;
 		IPODetails finalIpo = ipoRepository.save(ipo);
 		return finalIpo;
@@ -46,6 +57,21 @@ public class IpoServiceImpl implements IpoService
 	
 	@Override
 	public void deleteById(String id) {
-		ipoRepository.deleteById(id);
+		if(ipoRepository.findById(id) != null)
+			ipoRepository.deleteById(id);
+	}
+	
+	@Override
+	public void addNewIpo(IPODto ipo) {
+		IPODetails newIpo = new IPODetails();
+		Company company = companyRepository.findByName(ipo.getCompanyName());
+		StockExchange stockExchange = stockExchangeRepository.findByName(ipo.getStockExchangeName());
+		newIpo.setCompany(company);
+		newIpo.setStockExchange(stockExchange);
+		newIpo.setListingDate(ipo.getListingDate());
+		newIpo.setPricePerShare(ipo.getPricePerShare());
+		newIpo.setTotalShares(ipo.getTotalShares());
+		newIpo.setRemarks(ipo.getRemarks());
+		ipoRepository.save(newIpo);
 	}
 }

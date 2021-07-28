@@ -1,0 +1,31 @@
+.btn-custom{
+    background-color: purple;
+    color: white;
+    font-weight: 700;
+}
+
+.thead-custom{
+    background-color: white;
+}
+
+table { box-shadow: 3px 3px 3px grey} 
+
+td{
+    padding:30px;
+}
+table
+{
+    counter-reset: rowNumber;
+}
+
+table tr > td:first-child
+{
+    counter-increment: rowNumber;
+}
+
+table tr td:first-child::before
+{
+    content: counter(rowNumber);
+    min-width: 1em;
+    margin-right: 0.5em;
+}
