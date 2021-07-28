@@ -8,10 +8,14 @@ import java.util.Optional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.project.stockpriceservice.dto.StockPriceDTO;
 import com.project.stockpriceservice.model.Company;
 import com.project.stockpriceservice.model.Sector;
+import com.project.stockpriceservice.model.StockExchange;
 import com.project.stockpriceservice.model.StockPrice;
+import com.project.stockpriceservice.repository.CompanyRepository;
 import com.project.stockpriceservice.repository.SectorRepository;
+import com.project.stockpriceservice.repository.StockExchangeRepository;
 import com.project.stockpriceservice.repository.StockPriceRepository;
 import com.project.stockpriceservice.service.StockPriceService;
 
@@ -22,6 +26,12 @@ public class StockPriceServiceImpl implements StockPriceService {
 	
 	@Autowired
 	private SectorRepository sectorRepository;
+	
+	@Autowired
+	private CompanyRepository companyRepository;
+	
+	@Autowired
+	private StockExchangeRepository stockExchangeRepository;
 
 	public List<StockPrice> findAll() {
 		List<StockPrice> stockPrices = stockPriceRepository.findAll();
@@ -71,6 +81,40 @@ public class StockPriceServiceImpl implements StockPriceService {
 			}
 		}
 		return finalPrice;
+	}
+	
+	public List<StockPrice> getCompanyStockPrices(String companyname, String exchange, String from, String to){
+		List<StockPrice> priceList = stockPriceRepository.findAll();
+		List<StockPrice> finalPrice = new ArrayList<>();
+		System.out.println(priceList);
+		DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd-MM-yy");
+		LocalDate start = LocalDate.parse(from, formatter);
+		LocalDate end = LocalDate.parse(to, formatter);
+		for (StockPrice sp : priceList) {
+			System.out.println(companyname + sp.getCompany().getName() + exchange + sp.getStockExchange().getName() );
+			if (companyname.equals(sp.getCompany().getName()) && sp.getStockExchange().getName().equals(exchange)) {
+				System.out.println("In IF");
+				LocalDate current = LocalDate.parse(sp.getCurrentPriceDate(), formatter);
+				System.out.println(current.toString());
+				if(current.compareTo(start)>0 && current.compareTo(end)<0) {
+					System.out.println(sp.getCompany().getName());
+					finalPrice.add(sp);
+				}
+			}
+			System.out.println("Iteration");
+		}
+		return finalPrice;
+	}
+	
+	public void saveList(List<StockPriceDTO> stockPriceDTO){
+		List<StockPrice> stockPriceList = new ArrayList<>();
+		for (StockPriceDTO sp:stockPriceDTO) {
+			Company company = companyRepository.findByCode(sp.getCompanyCode());
+			StockExchange stockExchange = stockExchangeRepository.findByName(sp.getStockExchangeName());
+			StockPrice stockPrice = new StockPrice(company, stockExchange, sp.getCurrentPriceDate(), sp.getPrice(), sp.getTime());
+			stockPriceList.add(stockPrice);
+		}
+		stockPriceRepository.saveAll(stockPriceList);
 	}
 
 }

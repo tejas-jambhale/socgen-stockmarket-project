@@ -19,7 +19,24 @@ public class StockPrice{
 	public StockExchange stockExchange;
 	public String currentPriceDate;
 	public double price;
+	public String time;
 	
+
+	public StockPrice(Company company, StockExchange stockExchange, String currentPriceDate, double price,
+			String time) {
+		this.company = company;
+		this.stockExchange = stockExchange;
+		this.currentPriceDate = currentPriceDate;
+		this.price = price;
+		this.time = time;
+	}
+	
+	public String getTime() {
+		return time;
+	}
+	public void setTime(String time) {
+		this.time = time;
+	}
 	public double getPrice() {
 		return price;
 	}
@@ -47,7 +64,4 @@ public class StockPrice{
 	public String getId() {
 		return id;
 	}
-	
-	
-	
 }

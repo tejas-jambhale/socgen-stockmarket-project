@@ -54,5 +54,10 @@ public class StockExchangeServiceImpl implements StockExchangeService {
 		}
 	}
 	
+	public void deleteExchange(String id) {
+		if (stockExchangeRepository.findById(id)!=null)
+			stockExchangeRepository.deleteById(id);
+	}
+	
 
 }

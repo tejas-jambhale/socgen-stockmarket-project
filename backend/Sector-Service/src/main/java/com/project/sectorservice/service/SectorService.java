@@ -9,4 +9,8 @@ public interface SectorService{
 	public List<Company> getCompanyList(String id);
 	public Sector getSectorDetails(String id);
 	public void addCompanyToSector(String sectorName, Company company);
+	public void addNewSector(Sector sector);
+	public void update(Sector sector);
+	public void deleteSector(String id);
+	public List<Sector> getAll();
 }

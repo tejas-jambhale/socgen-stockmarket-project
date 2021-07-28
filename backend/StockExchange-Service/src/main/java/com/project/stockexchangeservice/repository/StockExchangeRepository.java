@@ -13,5 +13,5 @@ public interface StockExchangeRepository extends MongoRepository<StockExchange, 
 	public List<StockExchange> findAll();
 	public Optional<StockExchange> findById(String id);
 	public StockExchange findByName(String name);	
-	
+	public void deleteById(String id);
 }
