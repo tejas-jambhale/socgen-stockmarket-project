@@ -1,4 +1,4 @@
-# socgen-stockmarket-project
+# stockmarket-project
 
 ### Tejas Jambhale
 
